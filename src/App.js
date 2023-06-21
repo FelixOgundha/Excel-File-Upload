@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import React from 'react';
 import { Form } from 'react-bootstrap';
+import Index from './components';
 
 function App() {
   const [selectedFile, setSelectedFile] = React.useState(null);
@@ -15,11 +16,11 @@ function App() {
     if (selectedFile) {
       // Create a FormData object to send the file
       const formData = new FormData();
-      formData.append('departmentList', selectedFile);
+      formData.append('file', selectedFile);
 
       // Perform the upload using your preferred method (e.g., Axios)
       // Replace `uploadUrl` with the appropriate URL for your server-side upload endpoint
-      const uploadUrl = 'https://api-meru.ngamia.africa/api/CourseManagement/UploadDepartmentsCSV';
+      const uploadUrl = 'https://api-meru.ngamia.africa/api/AccountManagement/UploadUsersCSV';
       axios.post(uploadUrl, formData)
         .then(response => {
           // Handle the successful upload response
@@ -34,11 +35,12 @@ function App() {
 
   return (
     <div className="App">
-      <div>
+      {/* <div>
         <h2>Upload CSV File</h2>
-        <input type="file" accept=".csv" onChange={handleFileChange} />
+        <input type="file" accept="*" onChange={handleFileChange} />
         <button onClick={handleUpload}>Upload</button>
-      </div>
+      </div> */}
+      <Index />
     </div>
   );
 }
